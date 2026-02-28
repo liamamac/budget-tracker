@@ -2,9 +2,13 @@ const express = require('express');
 const app = express();
 const mustacheExpress = require('mustache-express');
 
+const Model = require('/app.model.js');
+
 app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
+
+Model.makeConnection();
 
 app.get('/', function(req, res) {
     res.render('main_page');
