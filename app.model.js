@@ -9,4 +9,10 @@ async function makeConnection() {
         driver: sqlite3.Database
     });
 }
+
+async function getAllPets() {
+    const results = await db.all('SELECT rowid, * FROM pets');
+    return results;
+}
+
 module.exports = { makeConnection };

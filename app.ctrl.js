@@ -10,8 +10,11 @@ app.set('views', __dirname + '/views');
 
 Model.makeConnection();
 
-app.get('/', function(req, res) {
-    res.render('main_page');
+app.get('/', async function(req, res) {
+    
+    const petArray = await Model.getAllPets();
+
+    res.render('main_page', { pets: petArray } );
 });
 
 
