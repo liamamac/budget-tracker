@@ -20,5 +20,15 @@ app.get('/', async function(req, res) {
     res.render('main_page', { records: RecordArray, pets: petArray } );
 });
 
+app.post('/add-pet', async function(req, res){
+    const pet = {
+        name: req.body.name,
+        species: req.body.species,
+        breed: req.body.breed,
+        birth_date: req.body.birth_date
+    }
+    
+});
+
 
 app.listen(3000, () => { console.log("Server listening on port 3000")});

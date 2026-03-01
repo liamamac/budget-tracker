@@ -34,17 +34,25 @@ async function addRecord(record) {
     );
 }
 
-async function deletePet(pet) {
+async function deletePet(id) {
     await db.run(
-        'DELETE FROM pets WHERE pet_id = (?)', [pet.pet_id]
+        'DELETE FROM pets WHERE pet_id = (?)', [id]
     );
 }
 
-async function deleteRecord(record) {
+async function deleteRecord(id) {
     await db.run(
-        'DELETE FROM records WHERE id = (?)', [record.id]
+        'DELETE FROM records WHERE id = (?)', [id]
     );
 }
+
+async function viewRecord(id) {
+    const result = await db.get(
+        'SELECT * FROM records WHERE id = (?)', [id]
+    );
+}
+
+
 
 module.exports = { 
     makeConnection, 
@@ -53,5 +61,6 @@ module.exports = {
     addPet, 
     addRecord, 
     deletePet, 
-    deleteRecord
+    deleteRecord,
+    viewRecord
 };

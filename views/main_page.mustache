@@ -6,7 +6,22 @@
     <title>PetTracker</title>
 </head>
 <body>
-    <table>
+    <form action="/add-pet" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name">
+        <br>
+        <label for="breed">Breed</label>
+        <input type="text" name="breed">
+        <br>
+        <label for="species">Species</label>
+        <input type="text" name="species">
+        <br>
+        <label for="photo">Add photo</label>
+        <input type="file" name="photo">
+        <br>
+        <button type="submit">Add</button>
+    </form> 
+     <table>
         <tr>
             <th>Pet ID</th>
             <th>Name</th>
