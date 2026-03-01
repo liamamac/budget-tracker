@@ -46,6 +46,12 @@ async function deleteRecord(id) {
     );
 }
 
+async function updateRecord(record) {
+    await db.run(
+        'UPDATE records SET visit_date=?, visit_type=?, weight=?, cost=?, notes=? WHERE id=?',
+        [record.visit_date, record.visit_type, record.weight, record.cost, record.notes, record.id]
+    );
+}
 async function getRecordsByPetId(id) {
     const result = await db.all(
         'SELECT * FROM records WHERE pet_id = (?)', [id]
@@ -76,6 +82,7 @@ module.exports = {
     deletePet, 
     deleteRecord,
     getRecordsByPetId,
+    updateRecord,
     sortByDate,
     filterByVisitType
 };

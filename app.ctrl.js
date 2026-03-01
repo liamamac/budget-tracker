@@ -64,7 +64,7 @@ app.get('/add-record-form/:pet_id', async function(req, res){
 
 
 app.post('/add-record', async function(req, res){
-     console.log("pet_id: " , req.body.pet_id); 
+
     const record = {
         pet_id: req.body.pet_id,
         visit_date: req.body.visit_date,
@@ -86,6 +86,25 @@ app.post('/delete-record/:pet_id', async function(req, res){
     await Model.deleteRecord(req.body.id);
     recordArray = await Model.getRecordsByPetId(req.params.pet_id);
     res.render('records-page', {records: recordArray, pet_id: req.params.pet_id });
+});
+
+app.get('/update-record-form/:pet_id', async function(req, res){
+    const pet_id = req.params.pet_id;
+    const recordArray = await Model.getRecordsByPetId(pet_id);
+    res.render('records-page', { records: recordArray, updaterecord: true, pet_id: pet_id });
+});
+
+app.post('/update-record', async function(req, res){
+    const record = {
+        id: req.body.id,
+        visit_date: req.body.visit_date,
+        visit_type: req.body.visit_type,
+        weight: req.body.weight,
+        cost: req.body.cost,
+        notes: req.body.notes
+    }
+    await Model.updateRecord(record);
+    res.redirect('/record-page/' + req.body.pet_id);
 });
 
 

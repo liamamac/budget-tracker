@@ -15,60 +15,92 @@
             <li><a href="/about">About</a></li>
         </ul>        
     </nav>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Pet ID</th>
-            <th>Visit Date</th>
-            <th>Visit Type</th>
-            <th>Weight</th>
-            <th>Cost</th>
-            <th>Notes</th>
-        </tr>
-            {{#records}}
-        <tr>
-            <td>{{id}}</td>
-            <td>{{pet_id}}</td>
-            <td>{{visit_date}}</td>
-            <td>{{visit_type}}</td>
-            <td>{{weight}}</td>
-            <td>{{cost}}</td>
-            <td>{{notes}}</td>
-        </tr>
-            {{/records}}    
-    </table>
-    <a href="/add-record-form/{{pet_id}}" class="btn">Add Record</a><br>
-    {{#addrecord}}
-    <form action="/add-record" method="post">
-        <label for="pet_id">Pet ID</label>
-        <input type="text" name="pet_id">
-        <br>
-        <label for="visit_date">Visit Date</label>
-        <input type="text" name="visit_date">
-        <br>
-        <label for="visit_type">Visit Type</label>
-        <input type="text" name="visit_type">
-        <br>
-        <label for="weight">Weight</label>
-        <input type="text" name="weight">
-        <br>
-        <label for="cost">Cost</label>
-        <input type="text" name="cost">
-        <br>
-        <label for="notes">Notes</label>
-        <input type="text" name="notes">
-        <br>
-        <button type="submit">Add</button><br>
-    </form>
-    {{/addrecord}}
-    
-    <a href="/delete-record-form/{{pet_id}}" class="btn">Delete Record</a><br>
-    {{#deleterecord}}
-    <form action="/delete-record/{{pet_id}}" method="post">
-        <label for="id">ID</label>
-        <input type="text" name="id">
-        <button type="submit">Delete</button><br>
-    </form>
-    {{/deleterecord}}
+    <div class="main-container">
+        <div class="btn-container">
+            <a href="/add-record-form/{{pet_id}}" class="btn">Add Record</a><br>
+            {{#addrecord}}
+                <form action="/add-record" method="post">
+                    <label for="pet_id">Pet ID</label>
+                    <input type="text" name="pet_id">
+                    <br>
+                    <label for="visit_date">Visit Date</label>
+                    <input type="text" name="visit_date">
+                    <br>
+                    <label for="visit_type">Visit Type</label>
+                    <input type="text" name="visit_type">
+                    <br>
+                    <label for="weight">Weight</label>
+                    <input type="text" name="weight">
+                    <br>
+                    <label for="cost">Cost</label>
+                    <input type="text" name="cost">
+                    <br>
+                    <label for="notes">Notes</label>
+                    <input type="text" name="notes">
+                    <br>
+                    <button type="submit">Add</button><br>
+                </form>
+            {{/addrecord}}
+            
+            <a href="/delete-record-form/{{pet_id}}" class="btn">Delete Record</a><br>
+            {{#deleterecord}}
+                <form action="/delete-record/{{pet_id}}" method="post">
+                    <label for="id">ID</label>
+                    <input type="text" name="id">
+                    <button type="submit">Delete</button><br>
+                </form>
+            {{/deleterecord}}
+
+            <a href="/update-record-form/{{pet_id}}" class="btn">Update Record</a>
+            {{#updaterecord}}
+                <form action="/update-record" method="post">
+                    <label for="id">Record ID</label>
+                    <input type="text" name="id">
+                    <br>
+                    <label for="visit_date">Visit Date</label>
+                    <input type="text" name="visit_date">
+                    <br>
+                    <label for="visit_type">Visit Type</label>
+                    <input type="text" name="visit_type">
+                    <br>
+                    <label for="weight">Weight</label>
+                    <input type="text" name="weight">
+                    <br>
+                    <label for="cost">Cost</label>
+                    <input type="text" name="cost">
+                    <br>
+                    <label for="notes">Notes</label>
+                    <input type="text" name="notes">
+                    <br>
+                    <input type="hidden" name="pet_id" value="{{pet_id}}">
+                    <button type="submit">Update</button>
+                </form>
+            {{/updaterecord}}
+        </div>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Pet ID</th>
+                    <th>Visit Date</th>
+                    <th>Visit Type</th>
+                    <th>Weight</th>
+                    <th>Cost</th>
+                    <th>Notes</th>
+                </tr>
+                    {{#records}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{pet_id}}</td>
+                    <td>{{visit_date}}</td>
+                    <td>{{visit_type}}</td>
+                    <td>{{weight}}</td>
+                    <td>{{cost}}</td>
+                    <td>{{notes}}</td>
+                </tr>
+                    {{/records}}    
+            </table>
+        </div>
+    </div>
 </body>
 </html>

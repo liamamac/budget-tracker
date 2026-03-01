@@ -15,44 +15,48 @@
             <li><a href="/about">About</a></li>
         </ul>        
     </nav>
-    <a href="/add-form" class="btn">Add Pet</a><br>
-    {{#addpet}}
-        <form action="/add-pet" method="post">
-        <label for="name">Name</label>
-        <input type="text" name="name">
-        <br>
-        <label for="breed">Breed</label>
-        <input type="text" name="breed">
-        <br>
-        <label for="species">Species</label>
-        <input type="text" name="species">
-        <br>
-        <label for="birth-date">Birth Date</label>
-        <input type="text" name="birth_date">
-        <br>
-        <button type="submit">Add</button><br>
-    </form>
-    {{/addpet}}
+    <div class="main-container">
+        <div class="btn-container">
+            <a href="/add-form" class="btn">Add Pet</a><br>
+            {{#addpet}}
+                <form action="/add-pet" method="post">
+                <label for="name">Name</label><br>
+                <input type="text" name="name" placeholder="Spot..">
+                <br>
+                <label for="breed">Breed</label><br>
+                <input type="text" name="breed" placeholder="Lab..">
+                <br>
+                <label for="species">Species</label><br>
+                <input type="text" name="species" placeholder="Dog..">
+                <br>
+                <label for="birth-date">Birth Date</label><br>
+                <input type="text" name="birth_date" placeholder="YYYY/MM/DD">
+                <br><br>
+                <button type="submit">Add</button><br>
+            </form>
+            {{/addpet}}
 
-    <a href="/delete-form" class="btn">Delete Pet</a>
-    {{#deletepet}}
-        <form action="delete-pet" method="post">
-            <label for="id">Enter Pet ID to delete</label>
-            <input type="text" name="id">
-            <button type="submit">Delete</button>
-        </form>
-    {{/deletepet}}
-    
-    {{#pets}}
-    <div class="card">
-        <div class="container">
-            <h4>{{name}}</h4>
-            <p>{{species}}</p>
-            <p>{{breed}}</p>
-            <p>{{birth_date}}</p>
-            <a href="/record-page/{{pet_id}}" class="btn">View Records</a>
+            <a href="/delete-form" class="btn">Delete Pet</a><br>
+            {{#deletepet}}
+                <form action="delete-pet" method="post">
+                    <label for="id">Enter Pet ID</label><br>
+                    <input type="text" name="id">
+                    <br><br>
+                    <button type="submit">Delete</button>
+                </form>
+            {{/deletepet}}
+        </div>   
+        <div class="card-container">
+            {{#pets}}
+                <div class="card">
+                    <h4>{{name}}</h4>
+                    <p>{{species}}</p>
+                    <p>{{breed}}</p>
+                    <p>{{birth_date}}</p>
+                    <a href="/record-page/{{pet_id}}" class="btn">View Records</a>
+                </div>
+            {{/pets}}
         </div>
     </div>
-    {{/pets}}
 </body>
 </html>
