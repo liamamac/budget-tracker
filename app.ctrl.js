@@ -34,6 +34,10 @@ app.post('/add-pet', async function(req, res) {
     res.redirect('/');
 });
 
+app.post('/delete-pet', async function(req, res){
+    Model.deletePet(req.body.id)
+    res.redirect('/');
+});
 
 
 
