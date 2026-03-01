@@ -42,26 +42,18 @@
             <button type="submit">Delete</button>
         </form>
     {{/deletepet}}
-
     
-     <table>
-        <tr>
-            <th>Pet ID</th>
-            <th>Name</th>
-            <th>Species</th>
-            <th>Breed</th>
-            <th>birth_date</th>
-        </tr>
-            {{#pets}}
-        <tr>
-            <td>{{pet_id}}</td>
-            <td>{{name}}</td>
-            <td>{{species}}</td>
-            <td>{{breed}}</td>
-            <td>{{birth_date}}</td>
-        </tr>
-            {{/pets}}    
-    </table>
+    {{#pets}}
+    <div class="card">
+        <div class="container">
+            <h4>{{name}}</h4>
+            <p>{{species}}</p>
+            <p>{{breed}}</p>
+            <p>{{birth_date}}</p>
+        </div>
+    </div>
+    {{/pets}}
+
         <table>
         <tr>
             <th>ID</th>
