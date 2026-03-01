@@ -29,10 +29,29 @@ async function addPet(pet) {
 
 async function addRecord(record) {
     await db.run(
-        'INSERT INTO records(pet_id, visit_date, visit_type, weight, cost, notes VALUES (?,?,?,?,?',
+        'INSERT INTO records(pet_id, visit_date, visit_type, weight, cost, notes VALUES (?,?,?,?,?)',
         [record.pet_id, record.visit_date, record.visit_type, record.weight, record.cost, record.notes]
     );
 }
 
+async function deletePet(pet) {
+    await db.run(
+        'DELETE FROM pets WHERE pet_id = (?)', [pet.pet_id]
+    );
+}
 
-module.exports = { makeConnection, getAllPets, getAllRecords, addPet};
+async function deleteRecord(record) {
+    await db.run(
+        'DELETE FROM records WHERE id = (?)', [record.id]
+    );
+}
+
+module.exports = { 
+    makeConnection, 
+    getAllPets, 
+    getAllRecords, 
+    addPet, 
+    addRecord, 
+    deletePet, 
+    deleteRecord
+};
