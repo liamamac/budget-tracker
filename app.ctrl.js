@@ -17,7 +17,7 @@ app.get('/', async function(req, res) {
 
     const RecordArray = await Model.getAllRecords();
     console.log(RecordArray);
-    res.render('main_page', { Records: RecordArray}, { pets: petArray } );
+    res.render('main_page', { records: RecordArray, pets: petArray } );
 });
 
 
