@@ -22,6 +22,12 @@ app.get('/', async function(req, res) {
     res.render('main_page', { records: RecordArray, pets: petArray } );
 });
 
+app.get('/addform', async function(req, res){
+    const petArray = await Model.getAllPets();
+     res.render('main_page', { pets: petArray, addpet: true } );
+});
+
+
 app.post('/add-pet', async function(req, res) {
     const pet = {
         name: req.body.name,
@@ -38,6 +44,8 @@ app.post('/delete-pet', async function(req, res){
     Model.deletePet(req.body.id)
     res.redirect('/');
 });
+
+
 
 
 
