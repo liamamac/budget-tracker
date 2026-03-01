@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Records</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="/">PetHealth</a></li>
+            <li><a href="/pets">Pets</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>        
+    </nav>
     <table>
         <tr>
             <th>ID</th>
@@ -29,9 +37,12 @@
         </tr>
             {{/records}}    
     </table>
-    <a href="/add-record-form" class="btn">Add Record</a><br>
+    <a href="/add-record-form/{{pet_id}}" class="btn">Add Record</a><br>
     {{#addrecord}}
     <form action="/add-record" method="post">
+        <label for="pet_id">Pet ID</label>
+        <input type="text" name="pet_id">
+        <br>
         <label for="visit_date">Visit Date</label>
         <input type="text" name="visit_date">
         <br>
@@ -39,7 +50,7 @@
         <input type="text" name="visit_type">
         <br>
         <label for="weight">Weight</label>
-        <input type="text" name="Weight">
+        <input type="text" name="weight">
         <br>
         <label for="cost">Cost</label>
         <input type="text" name="cost">
@@ -50,5 +61,14 @@
         <button type="submit">Add</button><br>
     </form>
     {{/addrecord}}
+    
+    <a href="/delete-record-form/{{pet_id}}" class="btn">Delete Record</a><br>
+    {{#deleterecord}}
+    <form action="/delete-record/{{pet_id}}" method="post">
+        <label for="id">ID</label>
+        <input type="text" name="id">
+        <button type="submit">Delete</button><br>
+    </form>
+    {{/deleterecord}}
 </body>
 </html>
