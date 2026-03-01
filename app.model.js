@@ -15,4 +15,11 @@ async function getAllPets() {
     return results;
 }
 
-module.exports = { makeConnection };
+async function getAllRecords() {
+    const results = await db.all('SELECT rowid, * FROM records');
+    return results;
+}
+
+
+
+module.exports = { makeConnection, getAllPets, getAllRecords};
