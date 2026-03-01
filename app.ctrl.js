@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mustacheExpress = require('mustache-express');
+const multer = require('multer')
 
 const Model = require('./app.model.js');
 
@@ -59,7 +60,7 @@ app.get('/record-page/:pet_id', async function(req, res){
 app.get('/add-record-form/:pet_id', async function(req, res){
      
     const recordArray = await Model.getRecordsByPetId(req.params.pet_id);
-    res.render('records-page', { records: recordArray, addrecord: true } );
+    res.render('records-page', { records: recordArray, addrecord: true, pet_id: req.params.pet_id} );
 });
 
 

@@ -24,6 +24,7 @@ async function dbinit() {
         'INSERT INTO Records (pet_id, visit_date, visit_type, weight, cost, notes) VALUES (?,?,?,?,?,?)',
          ['1', '2026-01-05', 'Vaccination', '20.2', '150.54', 'no concerns'] 
     );
+    await db.run('ALTER TABLE pets ADD COLUMN photo TEXT');
 
 }
 dbinit();
