@@ -7,6 +7,7 @@ const Model = require('./app.model.js');
 app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
+app.use(express.static('public'));
 
 Model.makeConnection();
 
@@ -20,15 +21,16 @@ app.get('/', async function(req, res) {
     res.render('main_page', { records: RecordArray, pets: petArray } );
 });
 
-app.post('/add-pet', async function(req, res){
+app.post('/add-pet', async function(req, res) {
     const pet = {
         name: req.body.name,
         species: req.body.species,
         breed: req.body.breed,
         birth_date: req.body.birth_date
     }
-    
 });
+
+
 
 
 app.listen(3000, () => { console.log("Server listening on port 3000")});
