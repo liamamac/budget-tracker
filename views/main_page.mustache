@@ -22,7 +22,27 @@
             <td>{{breed}}</td>
             <td>{{birth_date}}</td>
         </tr>
-        {{/pets}}    
+            {{/pets}}    
+    </table>
+        <table>
+        <tr>
+            <th>ID</th>
+            <th>Visit Date</th>
+            <th>Visit Type</th>
+            <th>Weight</th>
+            <th>Cost</th>
+            <th>Notes</th>
+        </tr>
+            {{#records}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{visit_date}}</td>
+            <td>{{visit_type}}</td>
+            <td>{{weight}}</td>
+            <td>{{cost}}</td>
+            <td>{{notes}}</td>
+        </tr>
+            {{/records}}    
     </table>
 </body>
 </html>

@@ -14,7 +14,10 @@ app.get('/', async function(req, res) {
     
     const petArray = await Model.getAllPets();
     console.log(petArray);
-    res.render('main_page', { pets: petArray } );
+
+    const RecordArray = await Model.getAllRecords();
+    console.log(RecordArray);
+    res.render('main_page', { Records: RecordArray}, { pets: petArray } );
 });
 
 
