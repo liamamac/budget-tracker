@@ -20,6 +20,13 @@ async function getAllRecords() {
     return results;
 }
 
+async function addPet(pet) {
+    await db.run(
+        'INSERT INTO pets(name, species, breed, birth_date) VALUES (?,?,?,?)',
+         [pet.name, pet.species, pet.breed, pet.birth_date] 
+    );
+}
 
 
-module.exports = { makeConnection, getAllPets, getAllRecords};
+
+module.exports = { makeConnection, getAllPets, getAllRecords, addPet};
