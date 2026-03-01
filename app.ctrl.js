@@ -22,7 +22,7 @@ app.get('/', async function(req, res) {
     res.render('main_page', { records: RecordArray, pets: petArray } );
 });
 
-app.get('/addform', async function(req, res){
+app.get('/add-form', async function(req, res){
     const petArray = await Model.getAllPets();
      res.render('main_page', { pets: petArray, addpet: true } );
 });
@@ -40,7 +40,7 @@ app.post('/add-pet', async function(req, res) {
     res.redirect('/');
 });
 
-app.get('/deleteform', async function(req, res) {
+app.get('/delete-form', async function(req, res) {
     const petArray = await Model.getAllPets();
     res.render('main_page', { pets: petArray, deletepet: true } );
 }); 
@@ -50,7 +50,10 @@ app.post('/delete-pet', async function(req, res){
     res.redirect('/');
 });
 
-
+app.get('/record-page', async function(req, res){
+    const recordArray = await Model.getAllRecords();
+    res.render('records-page', {records: recordArray});
+});
 
 
 

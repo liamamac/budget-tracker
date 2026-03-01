@@ -15,7 +15,7 @@
             <li><a href="about.asp">About</a></li>
         </ul>        
     </nav>
-    <a href="/addform" class="btn">Add Pet</a><br>
+    <a href="/add-form" class="btn">Add Pet</a><br>
     {{#addpet}}
         <form action="/add-pet" method="post">
         <label for="name">Name</label>
@@ -34,7 +34,7 @@
     </form>
     {{/addpet}}
 
-    <a href="/deleteform" class="btn">Delete Pet</a>
+    <a href="/delete-form" class="btn">Delete Pet</a>
     {{#deletepet}}
         <form action="delete-pet" method="post">
             <label for="id">Enter Pet ID to delete</label>
@@ -50,31 +50,9 @@
             <p>{{species}}</p>
             <p>{{breed}}</p>
             <p>{{birth_date}}</p>
+            <a href="/record-page" class="btn">Add Record</a>
         </div>
     </div>
     {{/pets}}
-
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Pet ID</th>
-            <th>Visit Date</th>
-            <th>Visit Type</th>
-            <th>Weight</th>
-            <th>Cost</th>
-            <th>Notes</th>
-        </tr>
-            {{#records}}
-        <tr>
-            <td>{{id}}</td>
-            <td>{{pet_id}}</td>
-            <td>{{visit_date}}</td>
-            <td>{{visit_type}}</td>
-            <td>{{weight}}</td>
-            <td>{{cost}}</td>
-            <td>{{notes}}</td>
-        </tr>
-            {{/records}}    
-    </table>
 </body>
 </html>

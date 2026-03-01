@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Pet ID</th>
+            <th>Visit Date</th>
+            <th>Visit Type</th>
+            <th>Weight</th>
+            <th>Cost</th>
+            <th>Notes</th>
+        </tr>
+            {{#records}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{pet_id}}</td>
+            <td>{{visit_date}}</td>
+            <td>{{visit_type}}</td>
+            <td>{{weight}}</td>
+            <td>{{cost}}</td>
+            <td>{{notes}}</td>
+        </tr>
+            {{/records}}    
+    </table>
+</body>
+</html>
