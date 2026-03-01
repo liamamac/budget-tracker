@@ -27,6 +27,12 @@ async function addPet(pet) {
     );
 }
 
+async function addRecord(record) {
+    await db.run(
+        'INSERT INTO records(pet_id, visit_date, visit_type, weight, cost, notes VALUES (?,?,?,?,?',
+        [record.pet_id, record.visit_date, record.visit_type, record.weight, record.cost, record.notes]
+    );
+}
 
 
 module.exports = { makeConnection, getAllPets, getAllRecords, addPet};
