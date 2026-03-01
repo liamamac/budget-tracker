@@ -40,6 +40,11 @@ app.post('/add-pet', async function(req, res) {
     res.redirect('/');
 });
 
+app.get('/deleteform', async function(req, res) {
+    const petArray = await Model.getAllPets();
+    res.render('main_page', { pets: petArray, deletepet: true } );
+}); 
+
 app.post('/delete-pet', async function(req, res){
     Model.deletePet(req.body.id)
     res.redirect('/');
