@@ -4,15 +4,26 @@ ul {
     padding: 0;
     background-color: #333333;
     display: flex;
+    border-radius:10px
 }
+
 
 ul li a {
     display: block;
     color: white;
     padding: 14px 16px;
     text-decoration: none;
+    border-radius: 10px;
 }
 
 ul li a:hover {
     background-color: #111111;
 }
+
+body {
+    background-image: linear-gradient(to bottom right, rgb(129, 238, 158), white);
+    min-height: 100vh;
+}
+ nav {
+    border-radius: 4px;
+ }

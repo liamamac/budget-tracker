@@ -8,6 +8,7 @@ app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
 Model.makeConnection();
 
@@ -28,7 +29,11 @@ app.post('/add-pet', async function(req, res) {
         breed: req.body.breed,
         birth_date: req.body.birth_date
     }
+
+    Model.addPet(pet);
+    res.redirect('/');
 });
+
 
 
 
