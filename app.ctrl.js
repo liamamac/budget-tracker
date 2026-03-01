@@ -57,7 +57,7 @@ app.get('/record-page', async function(req, res){
 
 app.get('/add-record-form', async function(req, res){
     const recordArray = await Model.getAllRecords();
-     res.render('records-page', { reocrds: recordArray, addrecord: true } );
+     res.render('records-page', { records: recordArray, addrecord: true } );
 });
 
 
