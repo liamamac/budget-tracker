@@ -50,9 +50,22 @@ async function viewRecord(id) {
     const result = await db.get(
         'SELECT * FROM records WHERE id = (?)', [id]
     );
+    return result;
 }
 
+async function sortByDate(date) {
+    const result = await db.all(
+        'SELECT * FROM records WHERE visit_date < ?', [date]
+    );
+    return result;
+}
 
+async function filterByVisitType (visit_type) {
+    const result =  await db.all(
+        'SELECT * FROM records WHERE visit_type=?', [visit_type]
+    );
+    return result;
+}
 
 module.exports = { 
     makeConnection, 
@@ -62,5 +75,7 @@ module.exports = {
     addRecord, 
     deletePet, 
     deleteRecord,
-    viewRecord
+    viewRecord,
+    sortByDate,
+    filterByVisitType
 };
