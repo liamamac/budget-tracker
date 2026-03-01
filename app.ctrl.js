@@ -55,6 +55,25 @@ app.get('/record-page', async function(req, res){
     res.render('records-page', {records: recordArray});
 });
 
+app.get('/add-record-form', async function(req, res){
+    const recordArray = await Model.getAllRecords();
+     res.render('records-page', { reocrds: recordArray, addrecord: true } );
+});
+
+
+app.post('/add-record', async function(req, res){
+    const record = {
+        pet_id: req.body.pet_id,
+        visit_date: req.body.visit_date,
+        vist_type: req.body.vist_type,
+        weight: req.body.weight,
+        cost: req.body.cost,
+        notes: req.body.notes
+    }
+    Model.addRecord(record);
+    res.redirect('/record-page');
+});
+
 
 
 
