@@ -19,7 +19,7 @@
         <div class="btn-container">
             <a href="/add-form" class="btn">Add Pet</a><br>
             {{#addpet}}
-                <form action="/add-pet" method="post">
+                <form action="/add-pet" method="post" enctype="multipart/form-data">
                 <label for="name">Name</label><br>
                 <input type="text" name="name" placeholder="Spot..">
                 <br>
@@ -31,6 +31,9 @@
                 <br>
                 <label for="birth-date">Birth Date</label><br>
                 <input type="text" name="birth_date" placeholder="YYYY/MM/DD">
+                <br>
+                <label for="photo">Photo</label><br>
+                <input type="file" name="photo">
                 <br><br>
                 <button type="submit">Add</button><br>
             </form>
@@ -49,6 +52,8 @@
         <div class="card-container">
             {{#pets}}
                 <div class="card">
+                    {{#photo}}
+                    <img src="/{{photo}}" alt="{{name}}">
                     <h4>{{name}}</h4>
                     <p>{{species}}</p>
                     <p>{{breed}}</p>

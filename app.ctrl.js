@@ -13,6 +13,14 @@ app.use(express.urlencoded({ extended: true }));
 
 Model.makeConnection();
 
+const storage = multer.diskStorage({
+    destination: 'public/uploads/',
+    filename: function(req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+const upload = multer({storage: storage});
+
 app.get('/', async function(req, res) {
     
     const petArray = await Model.getAllPets();
@@ -29,15 +37,16 @@ app.get('/add-form', async function(req, res){
 });
 
 
-app.post('/add-pet', async function(req, res) {
+app.post('/add-pet',  upload.single('photo'), async function(req, res) {
     const pet = {
         name: req.body.name,
         species: req.body.species,
         breed: req.body.breed,
-        birth_date: req.body.birth_date
+        birth_date: req.body.birth_date,
+        photo: req.file ? 'uploads/' + req.file.filename : null
     }
 
-    Model.addPet(pet);
+    await Model.addPet(pet);
     res.redirect('/');
 });
 
